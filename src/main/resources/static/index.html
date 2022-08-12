@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS</title>
+    <style>
+        .center-it {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-it" style="margin-top: 20vh;">
+        <h1>NEWS</h1>
+    </div>
+    <div>
+        <button type="submit">save</button>
+    </div>
+    <div data-th-each="n: ${article}">
+        <table>
+            <tr>
+                <td>
+                    <form method="GET" action="/feeds">
+                        <div>
+                            <input type="checkbox" id="savearticle" name="save" value="articles">
+                            <label for="savearticle">save</label>
+                        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${title}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${id}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="${n.news_url}" th:text="${n.news_url}" target="_blank"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${n.tags}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${n.categories}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${n.newsBody}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-th-text="${n.published_on}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img th:src="${n.imageurl}">
+                </td>
+            </tr>
+
+            
+        </table>
+    </div>
+
+</body>
+
+</html>
